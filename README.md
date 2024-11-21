@@ -1,7 +1,7 @@
 Steps -
 - clone repo
 - cd into cloned repo
-- run `makepkg  -si --skipinteg`
+- run `makepkg -si --skipinteg`
 - Enable service `systemctl enable nessusagent.service`
 - Start service `systemctl start nessusagent.service`
 - `cd /opt/nessus-agent/sbin/`
