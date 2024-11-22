@@ -3,7 +3,7 @@
 
 pkgname=nessus-agent
 _pkgname=nessus_agent
-pkgver=10.7.3
+pkgver=10.8.0
 pkgrel=1
 pkgdesc="Nessus vulnerability scanner agent"
 arch=('x86_64')
@@ -13,7 +13,9 @@ license=('custom')
 options=(!strip debug)
 url="https://www.tenable.com/downloads/nessus-agents"
 install="$pkgname.install"
-source=("~/Downloads/NessusAgent-10.8.0-fc38.x86_64.rpm"        LICENSE)
+source=("NessusAgent-$pkgver-fc38.$arch.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus-agents/downloads/24587/download?i_agree_to_tenable_license_agreement=true"
+        LICENSE)
+conflicts=('nessus') # due to /etc/ld.so.conf.d/nessus.conf
 
 package() {
   mkdir -p "$pkgdir/etc/ld.so.conf.d" "$pkgdir/usr/share" "$pkgdir/opt/$pkgname" \
