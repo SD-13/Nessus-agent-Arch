@@ -22,7 +22,6 @@ def main():
             break
 
     if url is not None:
-        print(filename)
         print(url)
     else:
         print('Cannot find a download link!')

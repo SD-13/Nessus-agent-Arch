@@ -3,7 +3,7 @@
 
 pkgname=nessus-agent
 _pkgname=nessus_agent
-pkgver=10.8.0
+pkgver=10.8.1
 pkgrel=1
 pkgdesc="Nessus vulnerability scanner agent"
 arch=('x86_64')
@@ -13,8 +13,10 @@ license=('custom')
 options=(!strip debug)
 url="https://www.tenable.com/downloads/nessus-agents"
 install="$pkgname.install"
-source=("NessusAgent-$pkgver-fc38.$arch.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus-agents/downloads/24587/download?i_agree_to_tenable_license_agreement=true"
+source=("NessusAgent-$pkgver-fc38.$arch.rpm::$(python3 get_nessus_link.py)"
         LICENSE)
+sha256sums=('a1fe47fbeca1591b6981bd5d98c83cd4ed9963ed2629a45dc70668961e87374a'
+            'd647aedd39d571faa3f1a9906db561eecbd9c41605ba7f562261ffb04877ba26')
 conflicts=('nessus') # due to /etc/ld.so.conf.d/nessus.conf
 
 package() {
@@ -32,4 +34,3 @@ package() {
   # license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
