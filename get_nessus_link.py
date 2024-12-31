@@ -4,7 +4,7 @@
 # Source: https://gist.github.com/parly/a62d3f69abab8a16e878134d610d8cdc
 
 # To install the prerequisites, use the command below:
-#   pacman -S python python-beautifulsoup4 python-requests
+#   pacman -S python3 python-beautifulsoup4 python-requests
 
 import json
 
@@ -28,7 +28,7 @@ def main():
 
 
 def get_json():
-    res = requests.get('https://www.tenable.com/downloads/nessus-agents')
+    res = requests.get('https://www.tenable.com/downloads/nessus-agents', timeout=10)
     soup = BeautifulSoup(res.text, 'html.parser')
     tag = soup.find(id='__NEXT_DATA__')
     return json.loads(tag.string)
