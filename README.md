@@ -1,7 +1,7 @@
 Steps -
-- clone repo
-- cd into cloned repo
-- run `makepkg -si --skipinteg`
+- Run `pacman -S python python-beautifulsoup4 python-requests`
+- Clone and cd into the repo
+- Run `makepkg -si`
 - Enable service `systemctl enable nessusagent.service`
 - Start service `systemctl start nessusagent.service`
 - `cd /opt/nessus-agent/sbin/`
